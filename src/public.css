@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .check{
+        @apply border-2 border-black
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+}

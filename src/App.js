@@ -1,25 +1,101 @@
-import logo from './logo.svg';
-import './App.css';
+import './public.css';
+import {BrowserRouter as Router,Routes,Route,} from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
+import React, { useState,useEffect } from 'react'
+import Navbar from './components/Navbar';
+import NewsCategory from './components/newsCatergory';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import Loader from './components/Loader';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+ 
+const  App =()=> {
+    const  apiKey=process.env.REACT_APP_NEWSAPP_API_KEY
+    const [progress, setprogres] = useState(40);
+    const [loading, setloading] = useState(true);
+    const [sampleArticle, setsampleArticle] = useState({})   
+    const [darkmode, setdarkmode] = useState(false);
+     
+  
+    const toggleLoading=(value)=>{
+             setloading(value);
+    } 
 
-export default App;
+    const setProgress = (progress) =>{
+           
+          setprogres(progress);
+    }
+
+   
+
+    const UpdateNews=async  ()=>{
+        
+         let url=`https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=${apiKey}&pagesize=1&page=1`
+         let data= await fetch(url);
+         let parsedData=await data.json();
+         setsampleArticle(parsedData.articles);
+         console.log(sampleArticle);
+    }
+    useEffect(() => {
+      UpdateNews();
+      // eslint-disable-next-line
+    }, []); 
+ 
+
+   
+    const mode=()=>{
+           
+         let elem1=document.getElementById('sun');
+         let elem2=document.getElementById('moon');
+
+          if(!darkmode){
+             setdarkmode(true);
+
+             elem1.style.display="flex";
+             elem2.style.display="none";
+
+          }else{
+            setdarkmode(false);
+            elem1.style.display="none";
+            elem2.style.display="flex";
+          }
+    }
+
+    return (
+     <>
+
+      <Router>
+        {!sampleArticle&&<Loader />}
+        {!sampleArticle&& <LoadingBar className=''
+                color="red"
+                progress={70}
+           />}
+        {sampleArticle && 
+        <div id='body' className=''>
+           <Navbar className=""   mode={mode} darkmode={darkmode} />
+           <LoadingBar className=''
+                color="red"
+                progress={progress}
+           />
+             {loading && <Loader loaded={true} darkmode={darkmode}/> }
+             <Routes>
+             <Route exact  path='/'   element={<Home key="home" setloading={toggleLoading} darkmode={darkmode} setProgress={setProgress} apiKey={apiKey}/>}/>   
+             <Route exact  path='/business'  element={<NewsCategory  setloading={toggleLoading}  darkmode={darkmode} key="business"  apiKey={apiKey} setProgress={setProgress}  category="business"/>} />
+             <Route exact  path='/entertainment' element={<NewsCategory setloading={toggleLoading}  darkmode={darkmode}  key="entertainment"  apiKey={apiKey} setProgress={setProgress}  category="entertainment"/>} />
+             <Route exact  path='/health'  element={<NewsCategory  setloading={toggleLoading} key="health"  darkmode={darkmode} apiKey={apiKey}  setProgress={setProgress}  category="health"/>} />
+             <Route exact  path='/science'  element={<NewsCategory setloading={toggleLoading}  key="science" darkmode={darkmode}  apiKey={apiKey}  setProgress={setProgress}  category="science"/>} />
+             <Route exact  path='/sports'  element={<NewsCategory  setloading={toggleLoading} key="sports" darkmode={darkmode} apiKey={apiKey} setProgress={setProgress}  category="sports"/>} />
+             <Route exact  path='/technology'  element={<NewsCategory setloading={toggleLoading}  key="technology" darkmode={darkmode} apiKey={apiKey}   setProgress={setProgress}  category="technology"/>} />
+           </Routes>  
+           <Footer/>
+         </div>
+        }  
+      </Router>
+      </>
+    )
+  }
+
+
+export default App
+
+
