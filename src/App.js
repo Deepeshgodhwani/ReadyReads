@@ -12,14 +12,10 @@ import Loader from './components/Loader';
 const  App =()=> {
     const  apiKey=process.env.REACT_APP_NEWSAPP_API_KEY
     const [progress, setprogres] = useState(40);
-    const [loading, setloading] = useState(true);
     const [sampleArticle, setsampleArticle] = useState({})   
-    const [darkmode, setdarkmode] = useState(false);
+    const [darkmode, setdarkmode] = useState(true)  ;
      
-  
-    const toggleLoading=(value)=>{
-             setloading(value);
-    } 
+
 
     const setProgress = (progress) =>{
            
@@ -34,7 +30,6 @@ const  App =()=> {
          let data= await fetch(url);
          let parsedData=await data.json();
          setsampleArticle(parsedData.articles);
-         console.log(sampleArticle);
     }
     useEffect(() => {
       UpdateNews();
@@ -65,7 +60,7 @@ const  App =()=> {
      <>
 
       <Router>
-        {!sampleArticle&&<Loader />}
+        {!sampleArticle&&<Loader darkmode={darkmode} />}
         {!sampleArticle&& <LoadingBar className=''
                 color="red"
                 progress={70}
@@ -77,15 +72,14 @@ const  App =()=> {
                 color="red"
                 progress={progress}
            />
-             {loading && <Loader loaded={true} darkmode={darkmode}/> }
              <Routes>
-             <Route exact  path='/'   element={<Home key="home" setloading={toggleLoading} darkmode={darkmode} setProgress={setProgress} apiKey={apiKey}/>}/>   
-             <Route exact  path='/business'  element={<NewsCategory  setloading={toggleLoading}  darkmode={darkmode} key="business"  apiKey={apiKey} setProgress={setProgress}  category="business"/>} />
-             <Route exact  path='/entertainment' element={<NewsCategory setloading={toggleLoading}  darkmode={darkmode}  key="entertainment"  apiKey={apiKey} setProgress={setProgress}  category="entertainment"/>} />
-             <Route exact  path='/health'  element={<NewsCategory  setloading={toggleLoading} key="health"  darkmode={darkmode} apiKey={apiKey}  setProgress={setProgress}  category="health"/>} />
-             <Route exact  path='/science'  element={<NewsCategory setloading={toggleLoading}  key="science" darkmode={darkmode}  apiKey={apiKey}  setProgress={setProgress}  category="science"/>} />
-             <Route exact  path='/sports'  element={<NewsCategory  setloading={toggleLoading} key="sports" darkmode={darkmode} apiKey={apiKey} setProgress={setProgress}  category="sports"/>} />
-             <Route exact  path='/technology'  element={<NewsCategory setloading={toggleLoading}  key="technology" darkmode={darkmode} apiKey={apiKey}   setProgress={setProgress}  category="technology"/>} />
+             <Route exact  path='/'   element={<Home key="home" darkmode={darkmode} setProgress={setProgress} apiKey={apiKey}/>}/>   
+             <Route exact  path='/business'  element={<NewsCategory   darkmode={darkmode} key="business"  apiKey={apiKey} setProgress={setProgress}  category="business"/>} />
+             <Route exact  path='/entertainment' element={<NewsCategory  darkmode={darkmode}  key="entertainment"  apiKey={apiKey} setProgress={setProgress}  category="entertainment"/>} />
+             <Route exact  path='/health'  element={<NewsCategory   key="health"  darkmode={darkmode} apiKey={apiKey}  setProgress={setProgress}  category="health"/>} />
+             <Route exact  path='/science'  element={<NewsCategory   key="science" darkmode={darkmode}  apiKey={apiKey}  setProgress={setProgress}  category="science"/>} />
+             <Route exact  path='/sports'  element={<NewsCategory   key="sports" darkmode={darkmode} apiKey={apiKey} setProgress={setProgress}  category="sports"/>} />
+             <Route exact  path='/technology'  element={<NewsCategory   key="technology" darkmode={darkmode} apiKey={apiKey}   setProgress={setProgress}  category="technology"/>} />
            </Routes>  
            <Footer/>
          </div>

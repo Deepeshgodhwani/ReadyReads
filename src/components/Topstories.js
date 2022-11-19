@@ -4,7 +4,7 @@ import img from "../images/news-default-img.jpg";
 
 export default function Topstories(props) {
   const [articles, setarticles] = useState([]);
-  const { apiKey, category, darkmode } = props;
+  const { apiKey, category, darkmode, loader } = props;
 
   const UpdateNews = async () => {
     let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=${apiKey}&pagesize=13&page=1`;
@@ -22,7 +22,9 @@ export default function Topstories(props) {
   }, []);
 
   return (
-    <div
+    <>
+    
+    {!loader&&<div
       className={`w-[26%] flex-col xl:h-[200vh] space-y-3  hidden xl:flex mr-6   rounded-lg pt-7 `}
     >
       <div
@@ -32,7 +34,7 @@ export default function Topstories(props) {
           darkmode ? "text-[rgb(212,212,212)]" : "text-[rgb(51,51,51)]"
         } `}
       >
-        <p>Top Headlines</p>
+        <p className="pt-1">Top Headlines</p>
       </div>
       {articles.map((element) => {
         return (
@@ -61,6 +63,8 @@ export default function Topstories(props) {
           </div>
         );
       })}
-    </div>
+    </div>}
+
+    </>
   );
 }

@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import img from "../images/news-default-img.jpg";
 
 function Main(props) {
-  let element = document.getElementById("root");
-  const { apiKey, category, darkmode, setloading } = props;
+  
+  const { apiKey, category,loader, darkmode, setloading } = props;
   const [articles, setarticles] = useState([]);
-  const [frontArticle, setfrontArticle] = useState({});
+  const [frontArticle,setfrontArticle] = useState({});
   const [TrendingArticle, setTrendingArticle] = useState([]);
 
   const { setProgress } = props;
@@ -14,8 +14,6 @@ function Main(props) {
     setProgress(10);
     let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=${apiKey}&pagesize=23&page=1`;
     setloading(true);
-    element.style.height = "100vh";
-    element.style.overflow = "hidden";
     let data = await fetch(url);
     setProgress(40);
     let parsedData = await data.json();
@@ -26,8 +24,6 @@ function Main(props) {
       setarticles(parsedData.articles.slice(12, 18));
       setTrendingArticle(parsedData.articles.slice(19, 22));
     }
-    element.style.height = "auto";
-    element.style.overflow = "none";
     setloading(false);
     setProgress(100);
   };
@@ -39,8 +35,7 @@ function Main(props) {
 
   return (
     <>
-      {articles && (
-        <div className=" flex  xl:mx-6 rounded-lg py-10 lg:py-6 flex-col">
+      {!loader && <div className=" flex  xl:mx-6 rounded-lg py-10 lg:py-6 flex-col">
           <div
             className={`xl:space-x-4 flex-col xl:flex-row xl:w-[97%]  ${
               darkmode ? "bg-[rgb(51,51,51)]" : "bg-[rgb(255,255,255)]"
@@ -179,7 +174,7 @@ function Main(props) {
             })}
           </div>
         </div>
-      )}
+      }
     </>
   );
 }
