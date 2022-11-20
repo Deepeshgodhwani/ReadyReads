@@ -19,6 +19,10 @@ export default function NewsFrame(props) {
   const capitalize = (string) => {
     return string.charAt().toUpperCase() + string.slice(1);
   };
+
+   
+  
+
   return (
     <>
       {articles && (

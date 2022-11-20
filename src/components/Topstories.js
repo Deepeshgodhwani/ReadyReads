@@ -28,7 +28,7 @@ export default function Topstories(props) {
       className={`w-[26%] flex-col xl:h-[200vh] space-y-3  hidden xl:flex mr-6   rounded-lg pt-7 `}
     >
       <div
-        className={` font-bold  ${
+        className={` font-bold rounded-sm  ${
           darkmode ? "bg-[rgb(51,51,51)]" : "bg-[rgb(255,255,255)]"
         } -mb-3 text-lg pl-5 w-40 pb-1  ${
           darkmode ? "text-[rgb(212,212,212)]" : "text-[rgb(51,51,51)]"

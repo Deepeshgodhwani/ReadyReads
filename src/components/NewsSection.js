@@ -30,6 +30,31 @@ function NewsSection(props) {
     return string.charAt().toUpperCase() + string.slice(1);
   };
 
+   // to formate into hours //
+
+   const formatDate= (date)=>{
+    if(date){
+      let day=date.slice(8,10);
+      let year=date.slice(0,4);
+      let month=date.slice(5,7);
+      month=parseInt(month);
+      day=parseInt(day);
+      let hour=date.slice(11,13);
+      hour=parseInt(hour);
+      let currDate=(new Date());
+      let currDay=currDate.getDate();
+      let currhour=currDate.getHours();
+      if(day===currDay){
+        return currhour-hour+" hours ago";
+      }else{
+        let monthMap=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
+         return monthMap[month-1]+" "+day+", "+year;
+      }
+      
+    }
+     
+  }
+
   return (
     <>
       {
@@ -42,12 +67,12 @@ function NewsSection(props) {
             <div className=" bg-gradient-to-r px-4 text-white rounded-sm w-28 font-semibold text-lg from-[rgb(45,82,198)] to-[rgb(89,121,218)]">
               <p>{capitalize(category)}</p>
             </div>
-            <div className="flex space-x-6">
-              <div className=" md:w-[50%] xl:w-[20rem]  ">
+            <div className="flex group space-x-6">
+              <div className=" xl:h-[24rem] md:w-[50%] xl:w-[20rem]  ">
                 <a className="relative" href={frontArticle.url}>
                   <img
                     alt=""
-                    className="w-[100%]  md:h-80 md:w-[100%] lg:h-96 xl:h-72 xl:w-[20rem] mb-4 rounded-lg h-80"
+                    className="w-[100%]  md:h-80 md:w-[100%] lg:h-96 xl:h-60 xl:w-[20rem] mb-4 rounded-lg h-80"
                     src={
                       frontArticle.urlToImage == null
                         ? img
@@ -67,6 +92,16 @@ function NewsSection(props) {
                     } `}
                   >
                     {frontArticle.title}
+                    <p className={`text-xs px-1 absolute pb-2 hidden group-hover:flex font-bold  ${
+                  
+                  darkmode
+                    ? "text-[rgb(146,145,146)]"
+                    : "text-[rgb(162,164,162)]"
+                
+              } flex pt-2`}>
+                    {frontArticle.author == null ? "NewsCast" : frontArticle.author}
+                <p className="text-xs mx-2 bottom-0  text-[rgb(81,81,81)]">|</p> 
+                      {formatDate(frontArticle.publishedAt)}</p>
                   </p>
                 </a>
               </div>
@@ -75,7 +110,7 @@ function NewsSection(props) {
                   return (
                     <div
                       key={element.url}
-                      className={`flex  pb-4 md:w-[100%]  border-b-1  ${
+                      className={`flex relative group pb-4 md:w-[100%]  border-b-1  ${
                         darkmode
                           ? "border-[rgb(53,57,57)]"
                           : "border-[rgb(210,210,210)]"
@@ -104,7 +139,18 @@ function NewsSection(props) {
                             {element.title == null
                               ? element.title
                               : element.title.slice(0, 78)}
+                            
                           </p>
+                          <p className={`text-xs px-1 font-bold  ${
+                  
+                  darkmode
+                    ? "text-[rgb(146,145,146)]"
+                    : "text-[rgb(162,164,162)]"
+                
+              } hidden group-hover:flex absolute py-2 bottom-3 pt-2`}>
+                    {element.author == null ? "NewsCast" : element.author}
+                <p className="text-xs mx-2  text-[rgb(81,81,81)]">|</p> 
+                      {formatDate(element.publishedAt)}</p>
                         </a>
                       </div>
                     </div>
@@ -122,13 +168,13 @@ function NewsSection(props) {
               return (
                 <div
                   key={element.url}
-                  className={`flex mx-2 pb-4 xl:pb-0 md:w-[47.5%] xl:w-[31%] border-b-1  ${
+                  className={`flex mx-2 group relative pb-4 xl:pb-0 md:w-[47.5%] xl:w-[31%] border-b-1  ${
                     darkmode
                       ? "border-[rgb(53,57,57)]"
                       : "border-[rgb(210,210,210)]"
                   } gap-x-4`}
                 >
-                  <a className="relative w-24 xl:w-20" href={element.url}>
+                  <a className="relative  w-24 xl:w-20" href={element.url}>
                     <img
                       alt=""
                       className="w-24 xl:w-20 rounded-lg md:h-[5rem] h-[5.5rem]"
@@ -144,12 +190,24 @@ function NewsSection(props) {
                         : "text-[rgb(51,51,51)]"
                     } font-semibold `}
                   >
-                    <a href={element.url}>
-                      <p className=" ">
+                    <a className="" href={element.url}>
+                      <p className="pb-4 sm:pb-0 ">
                         {element.title == null
                           ? element.title
-                          : element.title.slice(0, 78)}
+                          : element.title.slice(0,70)}
+                          ..
                       </p>
+                      <p className={`text-xs px-1 font-bold  ${
+                  
+                  darkmode
+                    ? "text-[rgb(146,145,146)]"
+                    : "text-[rgb(162,164,162)]"
+                
+              } group-hover:flex absolute hidden  py-2 sm:bottom-5  md:bottom-0 pt-2`}>
+                    {element.author == null ? "NewsCast" : element.author}
+                <p className="text-xs mx-2  text-[rgb(81,81,81)]">|</p> 
+                      {formatDate(element.publishedAt)}</p>
+                  
                     </a>
                   </div>
                 </div>

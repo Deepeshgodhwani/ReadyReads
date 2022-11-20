@@ -38,6 +38,33 @@ export default function NewsSlot(props) {
   const capitalize = (string) => {
     return string.charAt().toUpperCase() + string.slice(1);
   };
+
+  // to formate into hours //
+
+  const formatDate= (date)=>{
+    if(date){
+      let day=date.slice(8,10);
+      let year=date.slice(0,4);
+      let month=date.slice(5,7);
+      month=parseInt(month);
+      day=parseInt(day);
+      let hour=date.slice(11,13);
+      hour=parseInt(hour);
+      let currDate=(new Date());
+      let currDay=currDate.getDate();
+      let currhour=currDate.getHours();
+      if(day===currDay){
+        return currhour-hour+" hours ago";
+      }else{
+        let monthMap=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
+         return monthMap[month-1]+" "+day+", "+year;
+      }
+      
+    }
+     
+  }
+ 
+
   return (
     <>
       {article1 && (
@@ -80,6 +107,11 @@ export default function NewsSlot(props) {
                     }
                   ></img>
                   <p className="absolute bottom-0 duration-300 group-hover:pb-6 px-4 text-white pb-4 font-semibold bg-gradient-to-t from-black to-transparent rounded-lg ">
+                  <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                  {article1.author == null ? "NewsCast" : article1.author}
+                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                      {formatDate(article1.publishedAt)}
+                      </p>
                     {article1.title == null
                       ? article1.title
                       : article1.title.slice(0, 98)}
@@ -97,8 +129,13 @@ export default function NewsSlot(props) {
                       article2.urlToImage == null ? img : article2.urlToImage
                     }
                   ></img>
+                  
                   <p className="absolute bottom-0 px-4 duration-300 group-hover:pb-6 text-white pb-4 font-semibold bg-gradient-to-t from-black to-transparent rounded-lg">
-                    {" "}
+                    <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                    {article2.author == null ? "NewsCast" : article2.author}
+                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                      {formatDate(article2.publishedAt)}
+                      </p>
                     {article2.title}
                   </p>
                 </a>
@@ -112,13 +149,18 @@ export default function NewsSlot(props) {
               <a href={article3.url}>
                 <img
                   alt=""
-                  className={`w-[37rem] lg py-6  h-[28.5rem] ${
+                  className={`w-[37rem] lg py-6 rounded-lg  h-[28.5rem] ${
                     darkmode ? "opacity-70" : "opacity-90"
                   } opacity-70`}
                   src={article3.urlToImage == null ? img : article3.urlToImage}
                 ></img>
                 <p className="absolute bottom-5 w-full duration-300 group-hover:pb-6  px-4  text-white pb-4 text-2xl font-bold bg-gradient-to-t from-black to-transparent ">
-                  {" "}
+                <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                {article3.author == null ? "NewsCast" : article3.author}
+                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                     {formatDate(article3.publishedAt)}
+                      </p> 
+
                   {article3.title}
                 </p>
               </a>
@@ -139,7 +181,11 @@ export default function NewsSlot(props) {
                     }
                   ></img>
                   <p className="absolute bottom-0 duration-300 group-hover:pb-6 px-4 text-white  pb-4 font-semibold bg-gradient-to-t from-black to-transparent rounded-lg">
-                    {" "}
+                  <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                  {article4.author == null ? "NewsCast" : article4.author}
+                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                      {formatDate(article4.publishedAt)}
+                      </p>
                     {article4.title}
                   </p>
                 </a>
@@ -156,7 +202,11 @@ export default function NewsSlot(props) {
                     }
                   ></img>
                   <p className="absolute bottom-0 duration-300 group-hover:pb-6 px-4 text-white  pb-4 font-semibold bg-gradient-to-t from-black   to-transparent rounded-lg">
-                    {" "}
+                  <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                  {article5.author == null ? "NewsCast" : article5.author}
+                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                      {formatDate(article5.publishedAt)}
+                      </p>
                     {article5.title}
                   </p>
                 </a>

@@ -3,12 +3,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "./Spinner";
 
 export default function MiscNews(props) {
-
-  const { apiKey, category, darkmode } = props;
+  const { apiKey, category, darkmode, setloading } = props;
   const [articles, setarticles] = useState([]);
   const [page, setpage] = useState(1);
- 
- 
+
   const [totalResults, settotalResults] = useState(1);
 
   const UpdateNews = async () => {
@@ -31,6 +29,9 @@ export default function MiscNews(props) {
     }`;
     let data = await fetch(url);
     let parsedData = await data.json();
+    if(!parsedData.articles){
+      setloading(true);
+    }
     let updatedArticles = articles.concat(parsedData.articles);
     setarticles(updatedArticles);
   };
@@ -51,58 +52,52 @@ export default function MiscNews(props) {
               } xl:py-14 sm:py-10`}
             >
               {articles.map((element) => {
-                
-                  return (
+                return (
+                  <div
+                    key={element.url}
+                    className="w-[100%]  sm:w-[48.4%] lg:w-[32%] xl:w-[23.5%]  relative "
+                  >
+                    <img
+                      alt=""
+                      className="w-[100%] sm:w-[100%] xl:w-[20rem] h-52 xl:h-52   md:h-60 rounded-lg"
+                      src={element.urlToImage}
+                    ></img>
                     <div
-                      key={element.url}
-                      className="w-[100%]  sm:w-[48.4%] lg:w-[32%] xl:w-[23.5%]  relative "
+                      className={`pt-3 ${
+                        darkmode
+                          ? "text-[rgb(212,212,212)]"
+                          : "text-[rgb(51,51,51)]"
+                      } hover:underline font-semibold `}
                     >
-                        <img
-                          alt=""
-                          className="w-[100%] sm:w-[100%] xl:w-[20rem] h-52 xl:h-52   md:h-60 rounded-lg"
-                          src={element.urlToImage}
-                        ></img>
-                        <div
-                          className={`pt-3 ${
-                            darkmode
-                              ? "text-[rgb(212,212,212)]"
-                              : "text-[rgb(51,51,51)]"
-                          } hover:underline font-semibold `}
-                        >
-                          <p>{element.title}</p>
-                        </div>
-                        <p
-                          className={`${
-                            darkmode
-                              ? "text-[rgb(133,137,137)]"
-                              : "text-[rgb(156,166,178)]"
-                          } py-1 font-semibold text-sm`}
-                        >
-                          {element.author}
-                        </p>
-                        <div
-                          className={`-bottom-5 absolute right-0  pb-1 border-1 ${
-                            darkmode
-                              ? "border-[rgb(213,213,213)]"
-                              : "border-[rgb(156,166,178)]"
-                          } font-semibold ${
-                            darkmode
-                              ? "text-[rgb(213,213,213)]"
-                              : "text-[rgb(156,166,178)]"
-                          } w-20 pl-3 rounded-md  text-xs`}
-                        >
-                          See more
-                        </div>
+                      <p>{element.title}</p>
                     </div>
-                  );
-                }
-               
-            
-            
-              )}
+                    <p
+                      className={`${
+                        darkmode
+                          ? "text-[rgb(133,137,137)]"
+                          : "text-[rgb(156,166,178)]"
+                      } py-1 font-semibold text-sm`}
+                    >
+                      {element.author}
+                    </p>
+                    <div
+                      className={`-bottom-5 absolute right-0  pb-1 border-1 ${
+                        darkmode
+                          ? "border-[rgb(213,213,213)]"
+                          : "border-[rgb(156,166,178)]"
+                      } font-semibold ${
+                        darkmode
+                          ? "text-[rgb(213,213,213)]"
+                          : "text-[rgb(156,166,178)]"
+                      } w-20 pl-3 rounded-md  text-xs`}
+                    >
+                      See more
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
-          
         </InfiniteScroll>
       )}
     </>
