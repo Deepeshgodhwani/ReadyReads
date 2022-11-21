@@ -8,7 +8,7 @@ import Loading from "./Loading";
 
 const NewsComponent = (props) => {
   let element = document.getElementById("root");
-  const { category, apiKey, darkmode } = props;
+  const { category, apiKey, darkmode, setcloseApp } = props;
   const [loader, setloader] = useState(false);
 
   const setLoading = (val) => {
@@ -40,6 +40,7 @@ const NewsComponent = (props) => {
             key={category}
             category={category}
             apiKey={apiKey}
+            setcloseApp={setcloseApp}
           />
         </div>
         <Topstories
@@ -54,6 +55,7 @@ const NewsComponent = (props) => {
         category={category}
         darkmode={darkmode}
         apiKey={apiKey}
+        setcloseApp={setcloseApp}
       />
     </>
   );

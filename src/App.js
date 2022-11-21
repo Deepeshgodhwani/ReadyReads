@@ -1,7 +1,7 @@
 import "./public.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Navbar from "./components/Navbar";
 import NewsCategory from "./components/newsCatergory";
 import Home from "./components/Home";
@@ -11,23 +11,13 @@ import Loader from "./components/Loader";
 const App = () => {
   const apiKey = process.env.REACT_APP_NEWSAPP_API_KEY;
   const [progress, setprogres] = useState(40);
-  const [sampleArticle, setsampleArticle] = useState({});
+  const [closeApp, setscloseApp] = useState(false);
   const [darkmode, setdarkmode] = useState(false);
 
   const setProgress = (progress) => {
     setprogres(progress);
   };
 
-  const UpdateNews = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=${apiKey}&pagesize=1&page=1`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    setsampleArticle(parsedData.articles);
-  };
-  useEffect(() => {
-    UpdateNews();
-    // eslint-disable-next-line
-  }, []);
 
   const mode = () => {
     let elem1 = document.getElementById("sun");
@@ -48,11 +38,11 @@ const App = () => {
   return (
     <>
       <Router>
-        {!sampleArticle && <Loader darkmode={darkmode} />}
-        {!sampleArticle && (
+        {closeApp && <Loader darkmode={darkmode} />}
+        {closeApp && (
           <LoadingBar className="" color="red" progress={70} />
         )}
-        {sampleArticle && (
+        {!closeApp && (
           <div id="body" className="">
             <Navbar className="" mode={mode} darkmode={darkmode} />
             <LoadingBar className="" color="red" progress={progress} />
@@ -66,6 +56,7 @@ const App = () => {
                     darkmode={darkmode}
                     setProgress={setProgress}
                     apiKey={apiKey}
+                    setscloseApp={setscloseApp}
                   />
                 }
               />
@@ -79,6 +70,8 @@ const App = () => {
                     apiKey={apiKey}
                     setProgress={setProgress}
                     category="business"
+                    setscloseApp={setscloseApp}
+                  
                   />
                 }
               />
@@ -92,6 +85,7 @@ const App = () => {
                     apiKey={apiKey}
                     setProgress={setProgress}
                     category="entertainment"
+                    setscloseApp={setscloseApp}
                   />
                 }
               />
@@ -105,6 +99,7 @@ const App = () => {
                     apiKey={apiKey}
                     setProgress={setProgress}
                     category="health"
+                    setscloseApp={setscloseApp}
                   />
                 }
               />
@@ -118,6 +113,7 @@ const App = () => {
                     apiKey={apiKey}
                     setProgress={setProgress}
                     category="science"
+                    setscloseApp={setscloseApp}
                   />
                 }
               />
@@ -131,6 +127,7 @@ const App = () => {
                     apiKey={apiKey}
                     setProgress={setProgress}
                     category="sports"
+                    setscloseApp={setscloseApp}
                   />
                 }
               />
@@ -144,11 +141,12 @@ const App = () => {
                     apiKey={apiKey}
                     setProgress={setProgress}
                     category="technology"
+                    setscloseApp={setscloseApp}
                   />
                 }
               />
             </Routes>
-            <Footer />
+            <Footer darkmode={darkmode} />
           </div>
         )}
       </Router>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import img from "../images/news-default-img.jpg";
 
 function Main(props) {
-  const { apiKey, category, loader, darkmode, setloading } = props;
+  const { apiKey, category, loader, darkmode, setloading, setcloseApp } = props;
   const [articles, setarticles] = useState([]);
   const [frontArticle, setfrontArticle] = useState({});
   const [TrendingArticle, setTrendingArticle] = useState([]);
@@ -23,9 +23,12 @@ function Main(props) {
       setarticles(parsedData.articles.slice(12, 18));
       setTrendingArticle(parsedData.articles.slice(19, 22));
     }
-    if(articles){
+    if (articles) {
       setloading(false);
+    } else {
+      setcloseApp(true);
     }
+
     setProgress(100);
   };
 
@@ -34,32 +37,41 @@ function Main(props) {
     // eslint-disable-next-line
   }, []);
 
-
-  
   // to formate into hours //
 
-  const formatDate= (date)=>{
-    if(date){
-      let day=date.slice(8,10);
-      let year=date.slice(0,4);
-      let month=date.slice(5,7);
-      month=parseInt(month);
-      day=parseInt(day);
-      let hour=date.slice(11,13);
-      hour=parseInt(hour);
-      let currDate=(new Date());
-      let currDay=currDate.getDate();
-      let currhour=currDate.getHours();
-      if(day===currDay){
-        return currhour-hour+" hours ago";
-      }else{
-        let monthMap=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
-         return monthMap[month-1]+day+","+year;
+  const formatDate = (date) => {
+    if (date) {
+      let day = date.slice(8, 10);
+      let year = date.slice(0, 4);
+      let month = date.slice(5, 7);
+      month = parseInt(month);
+      day = parseInt(day);
+      let hour = date.slice(11, 13);
+      hour = parseInt(hour);
+      let currDate = new Date();
+      let currDay = currDate.getDate();
+      let currhour = currDate.getHours();
+      if (day === currDay) {
+        return currhour - hour + " hours ago";
+      } else {
+        let monthMap = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        return monthMap[month - 1] + day + "," + year;
       }
-      
     }
-     
-  }
+  };
 
   return (
     <>
@@ -70,7 +82,11 @@ function Main(props) {
               darkmode ? "bg-[rgb(51,51,51)]" : "bg-[rgb(255,255,255)]"
             } xl:rounded-lg  flex `}
           >
-            <a href={frontArticle.url}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={frontArticle.url}
+            >
               <img
                 alt=""
                 className="w-[100%] h-60 sm:h-80 md:h-[35rem] lg:h-[40rem] xl:w-[32rem] xl:h-[25rem]  xl:rounded-l-lg "
@@ -84,6 +100,8 @@ function Main(props) {
             <a
               href={frontArticle.url}
               className="px-4 pb-3 xl:pb-0 relative xl:w-[23rem] "
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <p
                 className={` pb-6 xl:pt-10 py-4 xl:text-lg text-lg ${
@@ -107,17 +125,15 @@ function Main(props) {
               </p>
               <p
                 className={`${
-                  
-                    darkmode
-                      ? "text-[rgb(146,145,146)]"
-                      : "text-[rgb(162,164,162)]"
-                  
+                  darkmode
+                    ? "text-[rgb(146,145,146)]"
+                    : "text-[rgb(162,164,162)]"
                 } flex mt-4  xl:absolute bottom-4 text-sm font-semibold`}
               >
-                {frontArticle.author == null ? "NewsCast" : frontArticle.author} <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                {frontArticle.author == null ? "NewsCast" : frontArticle.author}{" "}
+                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p>
                 {formatDate(frontArticle.publishedAt)}
               </p>
-            
             </a>
           </div>
           <div
@@ -136,7 +152,11 @@ function Main(props) {
                    darkmode ? "bg-[rgb(51,51,51)]" : "bg-[rgb(255,255,255)]"
                  }   border-[rgb(53,57,57)]`}
                 >
-                  <a href={element.url}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={element.url}
+                  >
                     <img
                       alt=""
                       className="xl:w-[20rem] w-[100%] sm:h-96   h-60 md:h-[17rem] lg:h-[16rem] xl:h-[13rem] rounded-t-lg"
@@ -145,7 +165,12 @@ function Main(props) {
                       }
                     />
                   </a>
-                  <a className=" relative pt-3 px-4" href={element.url}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=" relative pt-3 px-4"
+                    href={element.url}
+                  >
                     <p
                       className={`${
                         darkmode
@@ -166,14 +191,17 @@ function Main(props) {
                       {element.description}
                     </p>
                   </a>
-                  <p className={`${
-                  
-                  darkmode
-                    ? "text-[rgb(146,145,146)]"
-                    : "text-[rgb(162,164,162)]"
-                
-              } px-4 my-2  font-[calibri]  absolute bottom-0 flex text-sm font-bold`}>{element.author == null ? "NewsCast" : element.author} <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
-                {formatDate(element.publishedAt)}</p>
+                  <p
+                    className={`${
+                      darkmode
+                        ? "text-[rgb(146,145,146)]"
+                        : "text-[rgb(162,164,162)]"
+                    } px-4 my-2  font-[calibri]  absolute bottom-0 flex text-sm font-bold`}
+                  >
+                    {element.author == null ? "NewsCast" : element.author}{" "}
+                    <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p>
+                    {formatDate(element.publishedAt)}
+                  </p>
                 </div>
               );
             })}
@@ -195,7 +223,12 @@ function Main(props) {
                   className="relative md:w-[33%]  w-[100%] xl:w-[31%]"
                   key={element.url}
                 >
-                  <a key={element.url} href={element.url}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={element.url}
+                    href={element.url}
+                  >
                     <img
                       alt=""
                       className={` xl:w-72 w-[100%] h-80 sm:h-96 md:h-60 lg:h-72 xl:h-48 rounded-lg ${

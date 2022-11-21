@@ -41,29 +41,39 @@ export default function NewsSlot(props) {
 
   // to formate into hours //
 
-  const formatDate= (date)=>{
-    if(date){
-      let day=date.slice(8,10);
-      let year=date.slice(0,4);
-      let month=date.slice(5,7);
-      month=parseInt(month);
-      day=parseInt(day);
-      let hour=date.slice(11,13);
-      hour=parseInt(hour);
-      let currDate=(new Date());
-      let currDay=currDate.getDate();
-      let currhour=currDate.getHours();
-      if(day===currDay){
-        return currhour-hour+" hours ago";
-      }else{
-        let monthMap=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
-         return monthMap[month-1]+" "+day+", "+year;
+  const formatDate = (date) => {
+    if (date) {
+      let day = date.slice(8, 10);
+      let year = date.slice(0, 4);
+      let month = date.slice(5, 7);
+      month = parseInt(month);
+      day = parseInt(day);
+      let hour = date.slice(11, 13);
+      hour = parseInt(hour);
+      let currDate = new Date();
+      let currDay = currDate.getDate();
+      let currhour = currDate.getHours();
+      if (day === currDay) {
+        return currhour - hour + " hours ago";
+      } else {
+        let monthMap = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        return monthMap[month - 1] + " " + day + ", " + year;
       }
-      
     }
-     
-  }
- 
+  };
 
   return (
     <>
@@ -96,7 +106,11 @@ export default function NewsSlot(props) {
               }`}
             >
               <div className="relative group delay-1000  w-80 xl:h-48 h-56 lg:w-80">
-                <a href={article1.url}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={article1.url}
+                >
                   <img
                     alt=""
                     className={`lg:w-80 w-80 ${
@@ -107,11 +121,11 @@ export default function NewsSlot(props) {
                     }
                   ></img>
                   <p className="absolute bottom-0 duration-300 group-hover:pb-6 px-4 text-white pb-4 font-semibold bg-gradient-to-t from-black to-transparent rounded-lg ">
-                  <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
-                  {article1.author == null ? "NewsCast" : article1.author}
-                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                    <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                      {article1.author == null ? "NewsCast" : article1.author}
+                      <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p>
                       {formatDate(article1.publishedAt)}
-                      </p>
+                    </p>
                     {article1.title == null
                       ? article1.title
                       : article1.title.slice(0, 98)}
@@ -119,7 +133,11 @@ export default function NewsSlot(props) {
                 </a>
               </div>
               <div className="relative w-80 group xl:h-48 h-56 lg:w-80 ">
-                <a href={article2.url}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={article2.url}
+                >
                   <img
                     alt=""
                     className={`lg:w-80 w-80  h-56 xl:h-48  rounded-lg ${
@@ -129,13 +147,13 @@ export default function NewsSlot(props) {
                       article2.urlToImage == null ? img : article2.urlToImage
                     }
                   ></img>
-                  
+
                   <p className="absolute bottom-0 px-4 duration-300 group-hover:pb-6 text-white pb-4 font-semibold bg-gradient-to-t from-black to-transparent rounded-lg">
                     <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
-                    {article2.author == null ? "NewsCast" : article2.author}
-                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                      {article2.author == null ? "NewsCast" : article2.author}
+                      <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p>
                       {formatDate(article2.publishedAt)}
-                      </p>
+                    </p>
                     {article2.title}
                   </p>
                 </a>
@@ -146,7 +164,7 @@ export default function NewsSlot(props) {
                 theme === "dark" ? "1" : "2"
               }`}
             >
-              <a href={article3.url}>
+              <a target="_blank" rel="noopener noreferrer" href={article3.url}>
                 <img
                   alt=""
                   className={`w-[37rem] lg py-6 rounded-lg  h-[28.5rem] ${
@@ -155,11 +173,11 @@ export default function NewsSlot(props) {
                   src={article3.urlToImage == null ? img : article3.urlToImage}
                 ></img>
                 <p className="absolute bottom-5 w-full duration-300 group-hover:pb-6  px-4  text-white pb-4 text-2xl font-bold bg-gradient-to-t from-black to-transparent ">
-                <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
-                {article3.author == null ? "NewsCast" : article3.author}
-                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
-                     {formatDate(article3.publishedAt)}
-                      </p> 
+                  <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                    {article3.author == null ? "NewsCast" : article3.author}
+                    <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p>
+                    {formatDate(article3.publishedAt)}
+                  </p>
 
                   {article3.title}
                 </p>
@@ -170,7 +188,11 @@ export default function NewsSlot(props) {
               className="flex py-6 xl:space-y-6 xl:space-x-0  space-x-6 xl:flex-col order-3 "
             >
               <div className="relative w-80 group xl:h-48 h-56 lg:w-80">
-                <a href={article4.url}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={article4.url}
+                >
                   <img
                     alt=""
                     className={`lg:w-80 w-80 h-56 xl:h-48 ${
@@ -181,17 +203,21 @@ export default function NewsSlot(props) {
                     }
                   ></img>
                   <p className="absolute bottom-0 duration-300 group-hover:pb-6 px-4 text-white  pb-4 font-semibold bg-gradient-to-t from-black to-transparent rounded-lg">
-                  <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
-                  {article4.author == null ? "NewsCast" : article4.author}
-                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                    <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                      {article4.author == null ? "NewsCast" : article4.author}
+                      <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p>
                       {formatDate(article4.publishedAt)}
-                      </p>
+                    </p>
                     {article4.title}
                   </p>
                 </a>
               </div>
               <div className="relative group xl:h-48 h-56 lg:w-80 w-80">
-                <a href={article5.url}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={article5.url}
+                >
                   <img
                     alt=""
                     className={`lg:w-80 xl:h-48 w-80  h-56 ${
@@ -202,11 +228,11 @@ export default function NewsSlot(props) {
                     }
                   ></img>
                   <p className="absolute bottom-0 duration-300 group-hover:pb-6 px-4 text-white  pb-4 font-semibold bg-gradient-to-t from-black   to-transparent rounded-lg">
-                  <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
-                  {article5.author == null ? "NewsCast" : article5.author}
-                <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p> 
+                    <p className="text-xs pb-1 hidden  group-hover:flex  font-semibold">
+                      {article5.author == null ? "NewsCast" : article5.author}
+                      <p className="text-xs mx-2 text-[rgb(81,81,81)]">|</p>
                       {formatDate(article5.publishedAt)}
-                      </p>
+                    </p>
                     {article5.title}
                   </p>
                 </a>

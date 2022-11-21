@@ -2,7 +2,9 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="bg-[rgb(31,47,95)] flex flex-col items-center gap-y-6 px-10 text-white py-10">
+    <div
+      className={`bg-[rgb(31,47,95)] flex flex-col items-center gap-y-6 px-10 text-white py-10`}
+    >
       <p className="font-semibold">
         Made with &nbsp;
         <i className=" text-[rgb(248,49,47)] fa-solid fa-heart"></i> &nbsp;by

@@ -10,7 +10,7 @@ import Loading from "./Loading";
 function Home(props) {
   let element = document.getElementById("root");
   document.title = "NewsCast";
-  const { apiKey, darkmode } = props;
+  const { apiKey, darkmode, setcloseApp } = props;
   const [loader, setloader] = useState(false);
 
   const setLoading = (val) => {
@@ -38,6 +38,7 @@ function Home(props) {
               setProgress={props.setProgress}
               setloading={setLoading}
               loader={loader}
+              setcloseApp={setcloseApp}
               darkmode={darkmode}
               key="general"
               category="general"
@@ -89,6 +90,7 @@ function Home(props) {
           category="general"
           apiKey={apiKey}
           setloading={setLoading}
+          setcloseApp={setcloseApp}
         />
       </div>
     </>

@@ -30,6 +30,12 @@ const Navbar = (props) => {
       elem1.style.display = "flex";
       elem2.style.display = "none";
     }
+    window.onresize = function () {
+      setveiwMenu(false);
+      menuElem.style.display = "none";
+      elem1.style.display = "flex";
+      elem2.style.display = "none";
+    };
   };
 
   const changeCursor = (event, value, value2) => {
@@ -178,7 +184,9 @@ const Navbar = (props) => {
           <div className="flex  flex-col">
             <Link to="/">
               {" "}
-              <p className="text-3xl font-bold pb-2 lg:pb-1">NewsCast</p>
+              <p className="text-3xl font-cursive font-bold pb-2 lg:pb-1">
+                NewsCast
+              </p>
             </Link>
           </div>
           <div

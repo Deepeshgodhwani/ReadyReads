@@ -20,8 +20,41 @@ export default function NewsFrame(props) {
     return string.charAt().toUpperCase() + string.slice(1);
   };
 
-   
-  
+  // to formate into hours //
+
+  const formatDate = (date) => {
+    if (date) {
+      let day = date.slice(8, 10);
+      let year = date.slice(0, 4);
+      let month = date.slice(5, 7);
+      month = parseInt(month);
+      day = parseInt(day);
+      let hour = date.slice(11, 13);
+      hour = parseInt(hour);
+      let currDate = new Date();
+      let currDay = currDate.getDate();
+      let currhour = currDate.getHours();
+      if (day === currDay) {
+        return currhour - hour + " hours ago";
+      } else {
+        let monthMap = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        return monthMap[month - 1] + " " + day + ", " + year;
+      }
+    }
+  };
 
   return (
     <>
@@ -47,12 +80,17 @@ export default function NewsFrame(props) {
               return (
                 <div
                   key={element.url}
-                  className={`flex hover:shadow-none duration-300 flex-col md:w-[48%] w-[100%] shadow-xl shadow-border  shadow-black rounded-lg xl:w-[20rem] 
+                  className={`flex hover:shadow-none group relative duration-300 flex-col md:w-[48%] w-[100%] shadow-xl shadow-border  shadow-black rounded-lg xl:w-[20rem] 
                    ${
                      darkmode ? "bg-[rgb(31,33,41)]" : "bg-[rgb(255,255,255)]"
                    }  border-b-1  border-[rgb(53,57,57)]`}
                 >
-                  <a href={element.url} className="px-1 py-1">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={element.url}
+                    className="px-1 py-1"
+                  >
                     <img
                       alt=""
                       className="xl:w-[20rem] sm:h-80 lg:h-80 w-[100%] md:h-60 h-60  xl:h-[12rem] rounded-t-lg"
@@ -61,7 +99,12 @@ export default function NewsFrame(props) {
                       }
                     />
                   </a>
-                  <a className=" relative pt-2 pb-6  px-4" href={element.url}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="  pt-2 pb-6  px-4"
+                    href={element.url}
+                  >
                     <p
                       className={` ${
                         darkmode
@@ -73,6 +116,17 @@ export default function NewsFrame(props) {
                     </p>
                     <p className="py-2 text-sm md:hidden">
                       {element.description}
+                    </p>
+                    <p
+                      className={`text-xs px-1 font-bold  ${
+                        darkmode
+                          ? "text-[rgb(146,145,146)]"
+                          : "text-[rgb(162,164,162)]"
+                      }  hidden group-hover:flex absolute py-2  bottom-0 pt-2`}
+                    >
+                      {element.author == null ? "NewsCast" : element.author}
+                      <p className="text-xs mx-2  text-[rgb(81,81,81)]">|</p>
+                      {formatDate(element.publishedAt)}
                     </p>
                   </a>
                 </div>
