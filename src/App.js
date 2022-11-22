@@ -49,7 +49,7 @@ const App = () => {
             <Routes>
               <Route
                 exact
-                path="/"
+                path="/NewsCast"
                 element={
                   <Home
                     key="home"
@@ -62,7 +62,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/business"
+                path="/NewsCast/business"
                 element={
                   <NewsCategory
                     darkmode={darkmode}
@@ -77,7 +77,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/entertainment"
+                path="/NewsCast/entertainment"
                 element={
                   <NewsCategory
                     darkmode={darkmode}
@@ -91,7 +91,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/health"
+                path="/NewsCast/health"
                 element={
                   <NewsCategory
                     key="health"
@@ -105,7 +105,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/science"
+                path="/NewsCast/science"
                 element={
                   <NewsCategory
                     key="science"
@@ -119,7 +119,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/sports"
+                path="/NewsCast/sports"
                 element={
                   <NewsCategory
                     key="sports"
@@ -133,7 +133,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/technology"
+                path="/NewsCast/technology"
                 element={
                   <NewsCategory
                     key="technology"

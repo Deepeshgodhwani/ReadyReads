@@ -89,7 +89,7 @@ const Navbar = (props) => {
              darkmode ? "bg-[rgb(39,39,39)]" : "bg-[rgb(242,242,242)]"
            } `}
           >
-            <Link to="/">
+            <Link to="/NewsCast">
               {" "}
               <p
                 onClick={(event) => changeCursor(event, "home", "homepara")}
@@ -102,7 +102,7 @@ const Navbar = (props) => {
                 Home
               </p>
             </Link>
-            <Link to="/business">
+            <Link to="/NewsCast/business">
               <p
                 onClick={(event) =>
                   changeCursor(event, "business", "businesspara")
@@ -116,7 +116,7 @@ const Navbar = (props) => {
                 Business
               </p>
             </Link>
-            <Link to="/entertainment">
+            <Link to="/NewsCast/entertainment">
               <p
                 onClick={(event) =>
                   changeCursor(event, "entertainment", "entertainpara")
@@ -130,7 +130,7 @@ const Navbar = (props) => {
                 Entertainment
               </p>
             </Link>
-            <Link to="/health">
+            <Link to="/NewsCast/health">
               <p
                 onClick={(event) => changeCursor(event, "health", "healthpara")}
                 className={`border-b-2  ${
@@ -142,7 +142,7 @@ const Navbar = (props) => {
                 Health
               </p>
             </Link>
-            <Link to="/science">
+            <Link to="/NewsCast/science">
               <p
                 onClick={(event) =>
                   changeCursor(event, "science", "sciencepara")
@@ -156,7 +156,7 @@ const Navbar = (props) => {
                 Science
               </p>
             </Link>
-            <Link to="/sports">
+            <Link to="/NewsCast/sports">
               <p
                 onClick={(event) => changeCursor(event, "sports", "sportspara")}
                 className={`border-b-2  ${
@@ -168,7 +168,7 @@ const Navbar = (props) => {
                 Sports
               </p>
             </Link>
-            <Link to="/technology">
+            <Link to="/NewsCast/technology">
               <p
                 onClick={(event) =>
                   changeCursor(event, "technology", "techpara")
@@ -182,7 +182,7 @@ const Navbar = (props) => {
           </div>
 
           <div className="flex  flex-col">
-            <Link to="/">
+            <Link to="/NewsCast">
               {" "}
               <p className="text-3xl font-cursive font-bold pb-2 lg:pb-1">
                 NewsCast
@@ -196,7 +196,7 @@ const Navbar = (props) => {
      text-[rgb(128,128,128)] lg:text-white
        lg:bg-transparent   overflow-x-scroll scrollbar-hide w-full lg:static text-sm lg:flex lg:font-semibold space-x-4 lg:space-x-6 `}
           >
-            <Link to="/">
+            <Link to="/NewsCast">
               <p
                 id="homepara"
                 onClick={(event) => changeCursor(event, "home", "homepara")}
@@ -212,7 +212,7 @@ const Navbar = (props) => {
               ></i>
             </Link>
 
-            <Link to="/business">
+            <Link to="/NewsCast/business">
               <p
                 id="businesspara"
                 onClick={(event) =>
@@ -229,7 +229,7 @@ const Navbar = (props) => {
                 } text-lg fa-sharp fa-solid fa-caret-up`}
               ></i>
             </Link>
-            <Link to="/entertainment">
+            <Link to="/NewsCast/entertainment">
               <p
                 id="entertainpara"
                 onClick={(event) =>
@@ -246,7 +246,7 @@ const Navbar = (props) => {
                 } text-lg fa-sharp fa-solid fa-caret-up`}
               ></i>
             </Link>
-            <Link to="/health">
+            <Link to="/NewsCast/health">
               <p
                 id="healthpara"
                 onClick={(event) => changeCursor(event, "health", "healthpara")}
@@ -261,7 +261,7 @@ const Navbar = (props) => {
                 } text-lg fa-sharp fa-solid fa-caret-up`}
               ></i>
             </Link>
-            <Link to="/science">
+            <Link to="/NewsCast/science">
               <p
                 id="sciencepara"
                 onClick={(event) =>
@@ -278,7 +278,7 @@ const Navbar = (props) => {
                 } text-lg fa-sharp fa-solid fa-caret-up`}
               ></i>
             </Link>
-            <Link to="/sports">
+            <Link to="/NewsCast/sports">
               <p
                 id="sportspara"
                 onClick={(event) => changeCursor(event, "sports", "sportspara")}
@@ -293,7 +293,7 @@ const Navbar = (props) => {
                 } text-lg fa-sharp fa-solid fa-caret-up`}
               ></i>
             </Link>
-            <Link to="/technology">
+            <Link to="/NewsCast/technology">
               <p
                 id="techpara"
                 onClick={(event) =>
