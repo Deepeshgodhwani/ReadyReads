@@ -1,6 +1,6 @@
 <h1 align="center">ReadyReads</h1> 
 
-![weather app cover](https://user-images.githubusercontent.com/91532881/166434542-76727ccb-0c98-4646-84fb-58e86d7ec3ff.png)
+![News app cover](https://res.cloudinary.com/dynjwlpl3/image/upload/v1676479213/Projects%20readme/newssshome_vawmvf.png)
 
 <h2 align="center">Web application to show the latest news.</h2>    
 
@@ -14,12 +14,11 @@
     <img src="https://img.shields.io/badge/Rest_API-02303A?style=for-the-badge&logo=react-router&logoColor=white" alt="restAPI"/>   
 </p>
      
-  <h3 align="center"><a href="https://mohit-weather-app.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
+  <h3 align="center"><a href="https://readyreads.onrender.com/"><strong>Want to see live preview »</strong></a></h3>
    
     
   <p align="center"> 
-    <br />&#10023;
-    <a href="#Demo">View Demo</a>   &#10023;  
+    <br />
     <a href="https://github.com/Deepeshgodwani/ReadyReads/issues">Report Bug</a>    &#10023;
     <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Install">Installing</a> &#10023;    
     <a href="#Contact">Author</a> &#10023;
@@ -32,28 +31,20 @@ This responsive news web app provides users with the latest and trending news st
 ## Glimpses of ReadyReads:
 <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/91532881/173182982-f6999b5f-cbbb-443e-81ea-0723fa104ba2.jpeg" alt="home" /></td>
-    <td><img src="https://user-images.githubusercontent.com/91532881/173183004-30d027d1-7edc-4901-b56d-bd5e9f1794af.jpeg" alt="food" /></td>
+    <td><img src="https://res.cloudinary.com/dynjwlpl3/image/upload/v1676478749/Projects%20readme/news1_rr7ojb.png" alt="home" /></td>
+    <td><img src="https://res.cloudinary.com/dynjwlpl3/image/upload/v1676478154/Projects%20readme/news2_buakml.png" alt="health" /></td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/91532881/173183016-b2e1f432-0fb8-4b59-8c51-1764a6e9702d.jpeg" alt="trending" /></td>
-    <td><img src="https://user-images.githubusercontent.com/91532881/173183032-0e675e3c-3b8b-4d67-9854-abe2c837701a.jpeg" alt="search" /></td>
+    <td><img src="https://res.cloudinary.com/dynjwlpl3/image/upload/v1676478172/Projects%20readme/news3_jxpczm.png" alt="education" /></td>
+    <td><img src="https://res.cloudinary.com/dynjwlpl3/image/upload/v1676478173/Projects%20readme/news5_xdlcnl.png" alt="" /></td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/91532881/173183042-5b1bce60-5ceb-41ee-a95a-f92ce2214f85.jpeg" alt="cart" /></td>
-    <td><img src="https://user-images.githubusercontent.com/91532881/173183058-d71be787-254c-4dbe-b4d9-f5d21aa3101d.jpeg" alt="signup" /></td>
+    <td><img src="https://res.cloudinary.com/dynjwlpl3/image/upload/v1676478171/Projects%20readme/new5_yfk1q8.png" /></mobile>
+    <td><img src="https://res.cloudinary.com/dynjwlpl3/image/upload/v1676478173/Projects%20readme/news4_qkf63n.png" alt="tab" /></td>
   </tr>
 </table>
 
 <br />
-
-## Demo
-
-https://user-images.githubusercontent.com/91532881/166426542-b271be2e-e7d9-4b3c-bfe7-5e9e51e26be4.mp4
-
-
-<br/>
-
 
 ## Getting Started
 
