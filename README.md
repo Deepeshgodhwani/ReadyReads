@@ -1,70 +1,143 @@
-# Getting Started with Create React App
+<h1 align="center">ReadyReads</h1> 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![weather app cover](https://user-images.githubusercontent.com/91532881/166434542-76727ccb-0c98-4646-84fb-58e86d7ec3ff.png)
 
-## Available Scripts
+<h2 align="center">Web application to show the latest news.</h2>    
 
-In the project directory, you can run:
+<br />
+<p align="center">
+    <img src="https://img.shields.io/badge/HTML5-%230077B5.svg?&style=for-the-badge&color=orange&logo=HTML5&logoColor=white" alt="html"/>  
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css3"/> 
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"/>  
+    <img src="https://img.shields.io/badge/JAVASCRIPT-%230077B5.svg?&style=for-the-badge&color=black&logo=JAVASCRIPT&logoColor=yellow" alt="css3"/>  
+    <img src="https://img.shields.io/badge/React_(17.0.2)-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
+    <img src="https://img.shields.io/badge/Rest_API-02303A?style=for-the-badge&logo=react-router&logoColor=white" alt="restAPI"/>   
+</p>
+     
+  <h3 align="center"><a href="https://mohit-weather-app.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
+   
+    
+  <p align="center"> 
+    <br />&#10023;
+    <a href="#Demo">View Demo</a>   &#10023;  
+    <a href="https://github.com/Deepeshgodwani/ReadyReads/issues">Report Bug</a>    &#10023;
+    <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Install">Installing</a> &#10023;    
+    <a href="#Contact">Author</a> &#10023;
+  </p>
+<br/>
+This responsive news web app provides users with the latest and trending news stories every day.This app is designed to work across a range of devices, including desktop and mobile. Users can browse and filter news articles by category,read in-depth articles with accompanying images. This project demonstrates the use of modern web development techniques to create a dynamic and engaging user experience for news consumption.
 
-### `npm start`
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Glimpses of ReadyReads:
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/91532881/173182982-f6999b5f-cbbb-443e-81ea-0723fa104ba2.jpeg" alt="home" /></td>
+    <td><img src="https://user-images.githubusercontent.com/91532881/173183004-30d027d1-7edc-4901-b56d-bd5e9f1794af.jpeg" alt="food" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/91532881/173183016-b2e1f432-0fb8-4b59-8c51-1764a6e9702d.jpeg" alt="trending" /></td>
+    <td><img src="https://user-images.githubusercontent.com/91532881/173183032-0e675e3c-3b8b-4d67-9854-abe2c837701a.jpeg" alt="search" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/91532881/173183042-5b1bce60-5ceb-41ee-a95a-f92ce2214f85.jpeg" alt="cart" /></td>
+    <td><img src="https://user-images.githubusercontent.com/91532881/173183058-d71be787-254c-4dbe-b4d9-f5d21aa3101d.jpeg" alt="signup" /></td>
+  </tr>
+</table>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br />
 
-### `npm test`
+## Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://user-images.githubusercontent.com/91532881/166426542-b271be2e-e7d9-4b3c-bfe7-5e9e51e26be4.mp4
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+This project was built using React v 17.0.2, Tailwind CSS and Rest API. It is a web application and for running on your local environment you should follow these guidelines.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- NPM 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Setup
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project repository can be found in [GitHub link](https://github.com/Deepeshgodwani/ReadyReads) or just clone the project using this command. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+```
+Using HTTPS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# git clone  https://github.com/Deepeshgodwani/ReadyReads.git
+```
 
-### Analyzing the Bundle Size
++ Open terminal on your workspace with
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+cd /home/workspace/ReadyReads
+```
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Install
 
-### Advanced Configuration
+Install NPM
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Check that you have node and npm installed
 
-### Deployment
+To check if you have Node.js installed, run this command in your terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+```
+node -v
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To confirm that you have npm installed you can run this command in your terminal:
+
+
+```
+npm -v
+```
+
+
+To install all the dependences of the project, run the following command:
+
+
+```
+npm install
+```
+
+
+To run the application, run the following command:
+
+```
+npm run dev
+```
+
+
+### Tools used on this project
+
+- Visual Studio Code
+
+<br/>
+
+
+## Contact
+
+If you want to contact me, you can reach me through below handles.
+
+[![linkedin](https://img.shields.io/badge/Deepesh_Godwani-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/deeepesh-godwani-4269531b0)
+[![Twitter](https://img.shields.io/badge/Deepesh_Godwani-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Deepeshgodwani)
+
+© 2023 Deepesh Godwani
+
+
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
