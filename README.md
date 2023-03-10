@@ -48,7 +48,7 @@ This responsive news web app provides users with the latest and trending news st
 
 ## Getting Started
 
-This project was built using React v 17.0.2, Tailwind CSS and Rest API. It is a web application and for running on your local environment you should follow these guidelines.
+This project was built using React, Tailwind CSS and Rest API. It is a web application and for running on your local environment you should follow these guidelines.
 
 
 ### Prerequisites
